@@ -1,47 +1,19 @@
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-public class Labyrinth {
-
-    private int height;
-    private int width;
+public class Labyrinth extends Frame {
 
     public Labyrinth() {
-        height = 1;
-        width = 1;
     }
 
-    public Labyrinth(int height, int width) {
-        this.height = height;
-        this.width = width;
-    }
-
-    public Frame generateFrame() {
-        Frame frame = new Frame();
-
-        final TextField textField = new TextField();
-        textField.setBounds(60, 50, 170, 20);
-        textField.setText("Hello");
-
-        Button button = new Button("click me");
-        button.setBounds(50,120,80,30);
-
-        button.addActionListener(new ActionListener() {
-            int counter = 0;
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                counter++;
-                textField.setText(counter + " st");
-            }
-        });
-
-        frame.add(textField);
-        frame.add(button);
-        frame.setSize(300,300);
-        frame.setLayout(null);
-        frame.setVisible(true);
-
-        return frame;
+    public void paint(Graphics g)
+    {
+        g.drawRect(0,0,100,100);
+        g.setColor(Color.cyan);
+        g.fillRect(0,0,100,100);
+        g.setColor(Color.black);
+        g.drawString("Hello Sabapathy",60,60);
+        g.drawOval(100,100,25,25);
+        g.setColor(Color.red);
+        g.fillOval(100,100,15,15);
     }
 }
