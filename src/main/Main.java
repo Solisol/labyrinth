@@ -5,6 +5,7 @@ import main.models.Vertex;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Random;
 
 public class Main {
 
@@ -12,15 +13,19 @@ public class Main {
 //        main.Labyrinth lab = new main.Labyrinth();
 //        lab.setSize(400, 300);
 //        lab.setVisible(true);
-        Graph graph = createGraph();
-        System.out.println(graph.toString());
-        for (int i = 0; i < 9; i++) {
-            System.out.println(getPossibleNeighbours(i, 3, 3));
+//        Graph graph = createGraph();
+//        System.out.println(graph.toString());
+//        for (int i = 0; i < 9; i++) {
+//            System.out.println(getPossibleNeighbours(i, 3, 3));
+//        }
+        Random random = new Random();
+        for (int i = 0; i < 50; i++) {
+            System.out.print(random.nextInt(3) + " ");
         }
     }
 
     private static Graph createGraph() {
-        Graph graph = new Graph();
+        Graph graph = new Graph(9);
         ArrayList<Vertex> nodes = new ArrayList<Vertex>();
 
         Vertex node = new Vertex(0);

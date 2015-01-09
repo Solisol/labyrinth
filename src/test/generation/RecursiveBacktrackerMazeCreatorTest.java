@@ -43,7 +43,7 @@ public class RecursiveBacktrackerMazeCreatorTest {
 
     }
     private static Graph createFullGraph() {
-        Graph graph = new Graph();
+        Graph graph = new Graph(9);
         ArrayList<Vertex> nodes = new ArrayList<Vertex>();
 
         Vertex node = new Vertex(0);

@@ -4,35 +4,53 @@ import main.models.Graph;
 import main.models.Vertex;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Random;
 
 public class RecursiveBacktrackerMazeCreator extends MazeCreator {
 
-    private LinkedList<Integer> stack = new LinkedList<Integer>();
+    private LinkedList<Vertex> stack = new LinkedList<Vertex>();
     private static int length;
-    private Graph graph;
+    private Graph floorAndWalls;
+    private Graph paths;
     private Random random = new Random();
     private ArrayList<Boolean> visited;
 
     protected void generateMaze() {
         length = getHeight() * getWidth();
         int width = getWidth();
-        graph = new Graph();
+        floorAndWalls = new Graph(length);
+        paths = new Graph(length);
         resetVisited();
 
         //Get start node
-        Vertex node = graph.getNodeInPosition(0);
+        Vertex node = floorAndWalls.getNodeInPosition(0);
+        stack.push(node);
 
-        visited.set(node.getIndex(), true);
-        node.setOutNodes(getPossibleNeighbours(node, graph, width));
-        graph.updateNodeInPosition(node.getIndex(), node);
+        while (stack.size() > 0) {
+            node = stack.pop();
+            visited.set(node.getIndex(), true);
+            node.setOutNodes(getPossibleNeighbours(node, floorAndWalls, width));
+            //floorAndWalls.updateNodeInPosition(node.getIndex(), node);
 
-        //pick new random possible node and put self on stack
-            //Do something about the path between new node and old
-        //if no possible node, pop stack
-        //do while stack not empty
+            //pick new random possible node and put self on stack
+            if (node.getOutNodes().size() > 0) {
+                ArrayList<Vertex> outNodes = node.getOutNodes();
+                //pick random neighbour
+                Vertex randomNeighbour = outNodes.get(random.nextInt(outNodes.size()));
+                //Do something about the path between new node and old
+                outNodes.remove(randomNeighbour.getIndex());
+                node.setOutNodes(outNodes);
+                floorAndWalls.updateNodeInPosition(node);
+                Vertex pathNode = paths.getNodeInPosition(node.getIndex());
+                ArrayList<Vertex> pathOutNodes = pathNode.getOutNodes();
+                pathOutNodes.add(randomNeighbour);
+                pathNode.setOutNodes(pathOutNodes);
+                paths.updateNodeInPosition(pathNode);
+                stack.push(node);
+                stack.push(randomNeighbour);
+            }
+        }
 
     }
 

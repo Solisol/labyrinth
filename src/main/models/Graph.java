@@ -3,6 +3,13 @@ package main.models;
 import java.util.ArrayList;
 
 public class Graph {
+    public Graph(int numberOfNodes) {
+        ArrayList<Vertex> nodes = new ArrayList<Vertex>();
+        for (int i = 0; i < numberOfNodes; i++) {
+            nodes.add(new Vertex(i));
+        }
+        this.nodes = nodes;
+    }
 
     private ArrayList<Vertex> nodes;
 
@@ -18,8 +25,8 @@ public class Graph {
         return nodes.get(index);
     }
 
-    public void updateNodeInPosition(int position, Vertex node) {
-        nodes.set(position, node);
+    public void updateNodeInPosition(Vertex node) {
+        nodes.set(node.getIndex(), node);
     }
 
     public String toString() {

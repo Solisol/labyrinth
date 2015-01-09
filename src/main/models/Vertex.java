@@ -7,8 +7,13 @@ public class Vertex {
     private ArrayList<Vertex> outNodes = new ArrayList<Vertex>();
     private int index;
 
-    public Vertex(int index) {
+    public Vertex(int index, ArrayList<Vertex> outNodes) {
         this.index = index;
+        this.outNodes = outNodes;
+    }
+
+    public Vertex(int index) {
+        new Vertex(index, new ArrayList<Vertex>());
     }
 
     public ArrayList<Vertex> getOutNodes() {
