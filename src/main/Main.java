@@ -1,10 +1,15 @@
+package main;
+
+import main.models.Graph;
+import main.models.Vertex;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Main {
 
     public static void main(String[] args) {
-//        Labyrinth lab = new Labyrinth();
+//        main.Labyrinth lab = new main.Labyrinth();
 //        lab.setSize(400, 300);
 //        lab.setVisible(true);
         Graph graph = createGraph();
@@ -18,17 +23,17 @@ public class Main {
         Graph graph = new Graph();
         ArrayList<Vertex> nodes = new ArrayList<Vertex>();
 
-        Vertex node = new Vertex();
-        Vertex node1 = new Vertex();
-        Vertex node2 = new Vertex();
-        Vertex node3 = new Vertex();
-        Vertex node4 = new Vertex();
-        Vertex node5 = new Vertex();
-        Vertex node6 = new Vertex();
-        Vertex node7 = new Vertex();
-        Vertex node8 = new Vertex();
+        Vertex node = new Vertex(0);
+        Vertex node1 = new Vertex(1);
+        Vertex node2 = new Vertex(2);
+        Vertex node3 = new Vertex(3);
+        Vertex node4 = new Vertex(4);
+        Vertex node5 = new Vertex(5);
+        Vertex node6 = new Vertex(6);
+        Vertex node7 = new Vertex(7);
+        Vertex node8 = new Vertex(8);
 
-        node.setOutNodes(new ArrayList<Vertex>(Arrays.asList(node3)));
+        node.setOutNodes(new ArrayList<Vertex>(Arrays.asList(node1, node3)));
         node1.setOutNodes(new ArrayList<Vertex>(Arrays.asList(node, node2, node4)));
         node2.setOutNodes(new ArrayList<Vertex>(Arrays.asList(node1, node5)));
         node3.setOutNodes(new ArrayList<Vertex>(Arrays.asList(node, node4, node6)));

@@ -1,3 +1,5 @@
+package main.models;
+
 import java.util.ArrayList;
 
 public class Graph {
@@ -10,6 +12,14 @@ public class Graph {
 
     public void setNodes(ArrayList<Vertex> nodes) {
         this.nodes = nodes;
+    }
+
+    public Vertex getNodeInPosition(int index) {
+        return nodes.get(index);
+    }
+
+    public void updateNodeInPosition(int position, Vertex node) {
+        nodes.set(position, node);
     }
 
     public String toString() {

@@ -1,8 +1,15 @@
+package main.models;
+
 import java.util.ArrayList;
 
 public class Vertex {
 
     private ArrayList<Vertex> outNodes = new ArrayList<Vertex>();
+    private int index;
+
+    public Vertex(int index) {
+        this.index = index;
+    }
 
     public ArrayList<Vertex> getOutNodes() {
         return outNodes;
@@ -22,8 +29,12 @@ public class Vertex {
             return res;
         }
         for (int i = 0; i < outNodes.size(); i++) {
-            res = res + i +  " ";
+            res = res + outNodes.get(i).getIndex() + " ";
         }
         return res + "}";
+    }
+
+    public int getIndex() {
+        return index;
     }
 }

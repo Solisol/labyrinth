@@ -3,22 +3,22 @@
  * Time: 6:38:11 PM
  * (c) 2008 Shawn Silverman
  */
-package maze;
+package main.maze;
 
 import java.util.Arrays;
 import java.io.PrintStream;
 
 /**
- * Implements the basic requirements of a rectangular maze generator.
- * Subclasses provide a specific generation algorithm.
+ * Implements the basic requirements of a rectangular main.maze generator.
+ * Subclasses provide a specific main.generation algorithm.
  *
  * @author Shawn Silverman
  */
 public abstract class MazeGenerator {
     /*public static void main(String[] args) {
-        maze.MazeGenerator maze = new HuntAndKillMazeGenerator(10, 10, 0, 9);
-        maze.generate();
-        maze.print(System.out);
+        main.maze.MazeGenerator main.maze = new HuntAndKillMazeGenerator(10, 10, 0, 9);
+        main.maze.generate();
+        main.maze.print(System.out);
     }*/
 
     static {
@@ -76,11 +76,11 @@ public abstract class MazeGenerator {
     }
 
     /**
-     * Create a new maze generator.  The height and width in cells is
+     * Create a new main.maze generator.  The height and width in cells is
      * specified.
      *
-     * @param width the maze width, in cells
-     * @param width the maze height, in cells
+     * @param width the main.maze width, in cells
+     * @param width the main.maze height, in cells
      * @throws IllegalArgumentException if either size non-positive.
      */
     protected MazeGenerator(int width, int height) {
@@ -100,7 +100,7 @@ public abstract class MazeGenerator {
     }
 
     /**
-     * Resets the maze.
+     * Resets the main.maze.
      */
     public final void reset() {
         // Fill the walls
@@ -110,7 +110,7 @@ public abstract class MazeGenerator {
     }
 
     /**
-     * Generates the maze.  This first resets the maze by calling
+     * Generates the main.maze.  This first resets the main.maze by calling
      * {@link #reset()}.
      */
     public final void generate() {
@@ -119,7 +119,7 @@ public abstract class MazeGenerator {
     }
 
     /**
-     * Generates the maze using a specific algorithm.  Subclasses implement
+     * Generates the main.maze using a specific algorithm.  Subclasses implement
      * this.
      */
     protected abstract void generateMaze();
@@ -257,25 +257,25 @@ public abstract class MazeGenerator {
     }
 
     /**
-     * Gets the maze width, in cells.
+     * Gets the main.maze width, in cells.
      *
-     * @return the maze width in cells.
+     * @return the main.maze width in cells.
      */
     public int getWidth() {
         return width;
     }
 
     /**
-     * Gets the maze height, in cells.
+     * Gets the main.maze height, in cells.
      *
-     * @return the maze height in cells.
+     * @return the main.maze height in cells.
      */
     public int getHeight() {
         return height;
     }
 
     /**
-     * Prints the maze.  The following characters are used for each part.
+     * Prints the main.maze.  The following characters are used for each part.
      * <ul>
      * <li><code>'-'</code> for horizontal walls</li>
      * <li><code>'|'</code> for vertical walls</li>

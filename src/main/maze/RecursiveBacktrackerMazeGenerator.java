@@ -3,20 +3,20 @@
  * Time: 7:13:22 PM
  * (c) 2008 Shawn Silverman
  */
-package maze;
+package main.maze;
 
 import java.util.LinkedList;
 import java.util.Random;
 
 /**
- * Implements a maze generator that uses the Recursive Backtracking algorithm.
+ * Implements a main.maze generator that uses the Recursive Backtracking algorithm.
  * <p>
- * This produces a maze with a small number of longer dead ends, and usually a
+ * This produces a main.maze with a small number of longer dead ends, and usually a
  * long and twisty solution.</p>
  *
  * @author Shawn Silverman
  * @see <a href="http://www.astrolog.org/labyrnth/algrithm.htm">Think
- * Labyrinth: Maze Algorithms</a>
+ * main.Labyrinth: Maze Algorithms</a>
  */
 public class RecursiveBacktrackerMazeGenerator extends MazeGenerator {
     // The starting coordinates
@@ -27,11 +27,11 @@ public class RecursiveBacktrackerMazeGenerator extends MazeGenerator {
     private Random rand = new Random();
 
     /**
-     * Creates a new Recursive Backtracking maze generator.  A random starting
+     * Creates a new Recursive Backtracking main.maze generator.  A random starting
      * location will be selected.
      *
-     * @param width  the maze width
-     * @param height the maze height
+     * @param width  the main.maze width
+     * @param height the main.maze height
      */
     public RecursiveBacktrackerMazeGenerator(int width, int height) {
         super(width, height);
@@ -41,11 +41,11 @@ public class RecursiveBacktrackerMazeGenerator extends MazeGenerator {
     }
 
     /**
-     * Creates a new Recursive Backtracking maze generator.  This uses the
+     * Creates a new Recursive Backtracking main.maze generator.  This uses the
      * given starting location.
      *
-     * @param width  the maze width
-     * @param height the maze height
+     * @param width  the main.maze width
+     * @param height the main.maze height
      * @param startX the starting X-coordinate
      * @param startY the starting Y-coordinate
      */
@@ -59,7 +59,7 @@ public class RecursiveBacktrackerMazeGenerator extends MazeGenerator {
     }
 
     /**
-     * Generate the maze.
+     * Generate the main.maze.
      */
     protected void generateMaze() {
         int width = getWidth();
@@ -146,6 +146,6 @@ public class RecursiveBacktrackerMazeGenerator extends MazeGenerator {
      * @return a string representation of this object.
      */
     public String toString() {
-        return "Recursive Backtracker maze generator";
+        return "Recursive Backtracker main.maze generator";
     }
 }
