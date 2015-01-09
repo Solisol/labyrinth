@@ -45,30 +45,20 @@ public class Main {
 
     private static ArrayList<Integer> getPossibleNeighbours(int node, int width, int height) {
         int length = width * height;
-        if (node == 0) {
-            return new ArrayList<Integer>(Arrays.asList(node + 1, width));
+        ArrayList<Integer> neighbours = new ArrayList<Integer>();
+
+        if (node % width != 0) {
+            neighbours.add(node - 1);
         }
-        if (node == width - 1) {
-            return new ArrayList<Integer>(Arrays.asList(node - 1, node + width));
+        if (node >= width) {
+            neighbours.add(node - width);
         }
-        if (node == length - width) {
-            return new ArrayList<Integer>(Arrays.asList(node - width, node + 1));
+        if (node < length - width) {
+            neighbours.add(node + width);
         }
-        if (node == length - 1) {
-            return new ArrayList<Integer>(Arrays.asList(node - width, node - 1));
+        if (node % width != 2) {
+            neighbours.add(node + 1);
         }
-        if (node < width - 1) {
-            return new ArrayList<Integer>(Arrays.asList(node - 1, node + 1, node + width));
-        }
-        if (length - width < node) {
-            return new ArrayList<Integer>(Arrays.asList(node - width, node - 1, node + 1));
-        }
-        if (node % width == 0) {
-            return new ArrayList<Integer>(Arrays.asList(node - width, node + 1, node + width));
-        }
-        if (node % width == 2) {
-            return new ArrayList<Integer>(Arrays.asList(node - width, node - 1, node + width));
-        }
-        return new ArrayList<Integer>(Arrays.asList(node - width, node - 1, node + 1, node + width));
+        return neighbours;
     }
 }
