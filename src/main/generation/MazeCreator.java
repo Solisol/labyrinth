@@ -4,17 +4,27 @@ import main.models.Graph;
 
 public abstract class MazeCreator {
 
-    private Graph maze;
+    protected Graph floorAndWalls;
+    protected Graph paths;
 
-    private int width;
-    private int height;
+    protected int length;
+    protected int width;
+    protected int height;
 
-    public Graph getMaze() {
-        return maze;
+    public Graph getFloorAndWalls() {
+        return floorAndWalls;
     }
 
-    public void setMaze(Graph maze) {
-        this.maze = maze;
+    public void setFloorAndWalls(Graph floorsAndWalls) {
+        this.floorAndWalls = floorsAndWalls;
+    }
+
+    public Graph getPaths() {
+        return paths;
+    }
+
+    public void setPaths(Graph paths) {
+        this.paths = paths;
     }
 
     public int getWidth() {
@@ -31,5 +41,13 @@ public abstract class MazeCreator {
 
     public void setHeight(int height) {
         this.height = height;
+    }
+
+    public void printMaze() {
+        System.out.print("|");
+        int length = width * height;
+        for (int i = 0; i < length; i++) {
+
+        }
     }
 }

@@ -10,15 +10,11 @@ import java.util.Random;
 public class RecursiveBacktrackerMazeCreator extends MazeCreator {
 
     private LinkedList<Vertex> stack = new LinkedList<Vertex>();
-    private static int length;
-    private Graph floorAndWalls;
-    private Graph paths;
     private Random random = new Random();
     private ArrayList<Boolean> visited;
 
     protected void generateMaze() {
-        length = getHeight() * getWidth();
-        int width = getWidth();
+        length = height * width;
         floorAndWalls = new Graph(length);
         paths = new Graph(length);
         resetVisited();
@@ -30,7 +26,7 @@ public class RecursiveBacktrackerMazeCreator extends MazeCreator {
         while (stack.size() > 0) {
             node = stack.pop();
             visited.set(node.getIndex(), true);
-            node.setOutNodes(getPossibleNeighbours(node, floorAndWalls, width));
+            node.setOutNodes(getPossibleNeighbours(node, floorAndWalls));
             //floorAndWalls.updateNodeInPosition(node.getIndex(), node);
 
             //pick new random possible node and put self on stack
@@ -61,7 +57,7 @@ public class RecursiveBacktrackerMazeCreator extends MazeCreator {
         }
     }
 
-    public ArrayList<Vertex> getPossibleNeighbours(Vertex node, Graph graph, int width) {
+    public ArrayList<Vertex> getPossibleNeighbours(Vertex node, Graph graph) {
         ArrayList<Vertex> neighbours = new ArrayList<Vertex>();
 
         int index = node.getIndex();
