@@ -13,7 +13,12 @@ public class RecursiveBacktrackerMazeCreator extends MazeCreator {
     private Random random = new Random();
     private ArrayList<Boolean> visited;
 
-    protected void generateMaze() {
+    public RecursiveBacktrackerMazeCreator(int width, int height) {
+        this.width = width;
+        this.height = height;
+    }
+
+    public void generateMaze() {
         length = height * width;
         floorAndWalls = new Graph(length);
         paths = new Graph(length);
@@ -27,7 +32,7 @@ public class RecursiveBacktrackerMazeCreator extends MazeCreator {
             node = stack.pop();
             visited.set(node.getIndex(), true);
             node.setOutNodes(getPossibleNeighbours(node, floorAndWalls));
-            //floorAndWalls.updateNodeInPosition(node.getIndex(), node);
+            floorAndWalls.updateNode(node);
 
             //pick new random possible node and put self on stack
             if (node.getOutNodes().size() > 0) {
@@ -35,15 +40,17 @@ public class RecursiveBacktrackerMazeCreator extends MazeCreator {
                 //pick random neighbour
                 Vertex randomNeighbour = outNodes.get(random.nextInt(outNodes.size()));
                 //Do something about the path between new node and old
-                outNodes.remove(randomNeighbour.getIndex());
-                node.setOutNodes(outNodes);
-                floorAndWalls.updateNodeInPosition(node);
+                node.removeFromNodes(randomNeighbour);
+                floorAndWalls.updateNode(node);
                 Vertex pathNode = paths.getNodeInPosition(node.getIndex());
-                ArrayList<Vertex> pathOutNodes = pathNode.getOutNodes();
-                pathOutNodes.add(randomNeighbour);
-                pathNode.setOutNodes(pathOutNodes);
-                paths.updateNodeInPosition(pathNode);
+                pathNode.addToNodes(randomNeighbour);
+                paths.updateNode(pathNode);
+                Vertex pathRandomNode = paths.getNodeInPosition(randomNeighbour.getIndex());
+                pathRandomNode.addToNodes(pathNode);
+                paths.updateNode(pathRandomNode);
+                //Push self to stack
                 stack.push(node);
+                //Push the new random neighbour to the stack
                 stack.push(randomNeighbour);
             }
         }
@@ -70,17 +77,10 @@ public class RecursiveBacktrackerMazeCreator extends MazeCreator {
         if (index  < length - width && !visited.get(index + width)) {
             neighbours.add(graph.getNodeInPosition(index + width));
         }
-        if (index % width != 2 && !visited.get(index + 1)) {
+        if (index % width != (width - 1) && !visited.get(index + 1)) {
             neighbours.add(graph.getNodeInPosition(index + 1));
         }
         return neighbours;
     }
 
-    public int getLength() {
-        return length;
-    }
-
-    public void setLength(int length) {
-        this.length = length;
-    }
 }

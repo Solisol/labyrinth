@@ -13,7 +13,7 @@ public class Vertex {
     }
 
     public Vertex(int index) {
-        new Vertex(index, new ArrayList<Vertex>());
+        this(index, new ArrayList<Vertex>());
     }
 
     public ArrayList<Vertex> getOutNodes() {
@@ -28,10 +28,18 @@ public class Vertex {
         return outNodes.size();
     }
 
+    public void addToNodes(Vertex node) {
+        outNodes.add(node);
+    }
+
+    public void removeFromNodes(Vertex node) {
+        outNodes.remove(node);
+    }
+
     public String toString() {
-        String res = "Vertex: {";
+        String res = "Vertex(" + index + "): {";
         if (outNodes.size() == 0) {
-            return res;
+            return res + "}";
         }
         for (int i = 0; i < outNodes.size(); i++) {
             res = res + outNodes.get(i).getIndex() + " ";

@@ -25,14 +25,14 @@ public class Graph {
         return nodes.get(index);
     }
 
-    public void updateNodeInPosition(Vertex node) {
+    public void updateNode(Vertex node) {
         nodes.set(node.getIndex(), node);
     }
 
     public String toString() {
-        String res = "Graph: ";
+        String res = "Graph[" + nodes.size() + "]: ";
         for (int i = 0; i < nodes.size(); i++) {
-            res = res + i + " " + nodes.get(i).toString() + ", ";
+            res = res + nodes.get(i).toString() + ", ";
         }
         return res;
     }
