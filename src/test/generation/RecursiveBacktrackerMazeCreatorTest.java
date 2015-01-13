@@ -29,17 +29,12 @@ public class RecursiveBacktrackerMazeCreatorTest {
     @Test
     public void testGenerateNeighbours() {
         Graph correctGraph = createFullGraph();
-        ArrayList<Vertex> testResult;
         ArrayList<Vertex> nodes = correctGraph.getNodes();
 
-        for (int i = 0; i < nodes.size(); i++) {
-            Vertex node = nodes.get(i);
-            testResult = maze.getPossibleNeighbours(node, correctGraph);
-            ArrayList<Vertex> correct = node.getOutNodes();
-            for (Vertex outNode : correct) {
-                //TODO compare index instead
-                assertTrue(testResult.contains(outNode));
-            }
+        for (Vertex node : nodes) {
+            ArrayList<Vertex> testNeighbours = maze.getPossibleNeighbours(node, correctGraph);
+            Vertex testNode = new Vertex(node.getIndex(), testNeighbours);
+            assertTrue(node.compareChildren(testNode));
         }
 
     }

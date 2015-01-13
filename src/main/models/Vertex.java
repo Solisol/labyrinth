@@ -42,4 +42,23 @@ public class Vertex {
     public int getIndex() {
         return index;
     }
+
+    public boolean compareChildren(Vertex other) {
+        if (index != other.getIndex()) {
+            return false;
+        }
+        for (Vertex child : outNodes) {
+            boolean isMatched = false;
+            for (Vertex otherChild : other.getOutNodes()) {
+                if (child.getIndex() == otherChild.getIndex()) {
+                    isMatched = true;
+                    break;
+                }
+            }
+            if (!isMatched) {
+                return isMatched;
+            }
+        }
+        return true;
+    }
 }
