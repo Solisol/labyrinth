@@ -14,36 +14,8 @@ public abstract class MazeCreator {
     protected int width;
     protected int height;
 
-    public Graph getFloorAndWalls() {
-        return floorAndWalls;
-    }
-
-    public void setFloorAndWalls(Graph floorsAndWalls) {
-        this.floorAndWalls = floorsAndWalls;
-    }
-
     public Graph getPaths() {
         return paths;
-    }
-
-    public void setPaths(Graph paths) {
-        this.paths = paths;
-    }
-
-    public int getWidth() {
-        return width;
-    }
-
-    public void setWidth(int width) {
-        this.width = width;
-    }
-
-    public int getHeight() {
-        return height;
-    }
-
-    public void setHeight(int height) {
-        this.height = height;
     }
 
     public void printMaze() {
@@ -65,6 +37,8 @@ public abstract class MazeCreator {
             }
         }
     }
+
+    public abstract void generateMaze();
 
     public boolean isLeftEdge(Vertex node) {
         return (node.getIndex() % width == 0);
