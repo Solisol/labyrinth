@@ -1,6 +1,6 @@
 package main;
 
-import main.generation.RecursiveBacktrackerMazeCreator;
+import main.creator.RecursiveBacktrackerMazeCreator;
 
 public class Main {
 

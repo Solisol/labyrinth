@@ -1,4 +1,4 @@
-package main.generation;
+package main.creator;
 
 import main.models.Graph;
 import main.models.Vertex;

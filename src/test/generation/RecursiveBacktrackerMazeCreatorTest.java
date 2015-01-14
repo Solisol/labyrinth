@@ -1,6 +1,6 @@
 package test.generation;
 
-import main.generation.RecursiveBacktrackerMazeCreator;
+import main.creator.RecursiveBacktrackerMazeCreator;
 import main.models.Graph;
 import main.models.Vertex;
 import org.junit.Before;
