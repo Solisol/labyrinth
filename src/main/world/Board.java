@@ -17,6 +17,7 @@ public class Board extends JPanel implements PathFinderListener {
     private final int length;
     private MazeCreator maze;
     private Color[] tiles;
+    private int fade;
 
     public Board(int width, int height) {
         this.width = width;
@@ -26,6 +27,7 @@ public class Board extends JPanel implements PathFinderListener {
         maze.generateMaze();
         tiles = new Color[length];
         Arrays.fill(tiles, Color.white);
+        fade = 0;
     }
 
     @Override
@@ -74,16 +76,20 @@ public class Board extends JPanel implements PathFinderListener {
 
     @Override
     public void nodeGetsPickeable(int index) {
-        System.out.println("Pickeable index is: " + index);
         tiles[index] = Color.blue;
         this.repaint();
     }
 
     @Override
     public void takenNode(int index) {
-        System.out.println("Taken node is: " + index);
-        tiles[index] = Color.cyan;
+        tiles[index] = new Color(0f,(float) fade/length, 0f);
+        fade++;
         this.repaint();
+        try {
+            Thread.sleep(2);
+        } catch (InterruptedException ie) {
+            //dooooo naaaathing
+        }
     }
 
     public MazeCreator getMaze() {
