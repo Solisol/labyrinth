@@ -3,17 +3,20 @@ package main.world;
 import main.creator.MazeCreator;
 import main.creator.RecursiveBacktrackerMazeCreator;
 import main.models.Vertex;
+import main.pathfinders.PathFinderListener;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 
-public class Board extends JPanel {
+public class Board extends JPanel implements PathFinderListener {
 
     private final int width;
     private final int height;
     private final int length;
     private MazeCreator maze;
+    private Color[] tiles;
 
     public Board(int width, int height) {
         this.width = width;
@@ -21,6 +24,8 @@ public class Board extends JPanel {
         length = width * height;
         maze = new RecursiveBacktrackerMazeCreator(width, height);
         maze.generateMaze();
+        tiles = new Color[length];
+        Arrays.fill(tiles, Color.white);
     }
 
     @Override
@@ -38,9 +43,22 @@ public class Board extends JPanel {
 
 
         ArrayList<Vertex> nodes = maze.getPaths().getNodes();
+
         for (int i = 0; i < length; i++) {
             int x = i % width;
             int y = i / width;
+
+            g.setColor(tiles[i]);
+            g.fillRect(tileWidth * x, tileHeight * y, tileWidth, tileHeight);
+
+        }
+
+        g.setColor(Color.black);
+
+        for (int i = 0; i < length; i++) {
+            int x = i % width;
+            int y = i / width;
+
             Vertex node = nodes.get(i);
             if (maze.isLeftEdge(node)) {
                 g.drawLine(tileWidth * x, tileHeight * y, tileWidth * x, tileHeight * (y + 1));
@@ -52,7 +70,23 @@ public class Board extends JPanel {
                 g.drawLine(tileWidth * (x + 1), tileHeight * y, tileWidth * (x + 1), tileHeight * (y + 1));
             }
         }
-        maze.printMaze();
     }
 
+    @Override
+    public void nodeGetsPickeable(int index) {
+        System.out.println("Pickeable index is: " + index);
+        tiles[index] = Color.blue;
+        this.repaint();
+    }
+
+    @Override
+    public void takenNode(int index) {
+        System.out.println("Taken node is: " + index);
+        tiles[index] = Color.cyan;
+        this.repaint();
+    }
+
+    public MazeCreator getMaze() {
+        return maze;
+    }
 }
