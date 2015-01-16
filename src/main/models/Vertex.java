@@ -51,6 +51,10 @@ public class Vertex {
         return index;
     }
 
+    public int neighbourSize() {
+        return outNodes.size();
+    }
+
     public boolean compareChildren(Vertex other) {
         if (index != other.getIndex()) {
             return false;
