@@ -13,7 +13,7 @@ public class Main {
     public static void main(String[] args) {
         JFrame frame = new JFrame();
         frame.setLayout(new GridLayout(1,1));
-        Board board = new Board(100, 100);
+        Board board = new Board(10, 10);
         frame.add(board);
         frame.setSize(801,801);
         frame.setTitle("Hello frameu laburinthu");

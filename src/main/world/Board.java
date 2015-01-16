@@ -2,6 +2,7 @@ package main.world;
 
 import main.creator.MazeCreator;
 import main.creator.NoMazeCreator;
+import main.creator.OpenMazeCreator;
 import main.creator.RecursiveBacktrackerMazeCreator;
 import main.models.Vertex;
 import main.pathfinders.PathFinderListener;
@@ -25,7 +26,8 @@ public class Board extends JPanel implements PathFinderListener {
         this.height = height;
         length = width * height;
 //        maze = new RecursiveBacktrackerMazeCreator(width, height);
-        maze = new NoMazeCreator(width, height);
+        maze = new OpenMazeCreator(width, height);
+//        maze = new NoMazeCreator(width, height);
         maze.generateMaze();
         tiles = new Color[length];
         Arrays.fill(tiles, Color.white);
@@ -78,7 +80,7 @@ public class Board extends JPanel implements PathFinderListener {
 
     @Override
     public void nodeGetsPickeable(int index) {
-        tiles[index] = Color.blue;
+        tiles[index] = Color.green;
         this.repaint();
     }
 
@@ -88,7 +90,7 @@ public class Board extends JPanel implements PathFinderListener {
         fade++;
         this.repaint();
         try {
-            Thread.sleep(2);
+            Thread.sleep(5);
         } catch (InterruptedException ie) {
             //dooooo naaaathing
         }
