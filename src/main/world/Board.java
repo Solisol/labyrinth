@@ -82,7 +82,7 @@ public class Board extends JPanel implements PathFinderListener {
 
     @Override
     public void takenNode(int index) {
-        tiles[index] = new Color(0f,(float) fade/length, 0f);
+        tiles[index] = new Color(1.0f, (float) fade/length, (float) fade/length);
         fade++;
         this.repaint();
         try {
