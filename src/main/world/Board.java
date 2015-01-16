@@ -1,6 +1,7 @@
 package main.world;
 
 import main.creator.MazeCreator;
+import main.creator.NoMazeCreator;
 import main.creator.RecursiveBacktrackerMazeCreator;
 import main.models.Vertex;
 import main.pathfinders.PathFinderListener;
@@ -23,7 +24,8 @@ public class Board extends JPanel implements PathFinderListener {
         this.width = width;
         this.height = height;
         length = width * height;
-        maze = new RecursiveBacktrackerMazeCreator(width, height);
+//        maze = new RecursiveBacktrackerMazeCreator(width, height);
+        maze = new NoMazeCreator(width, height);
         maze.generateMaze();
         tiles = new Color[length];
         Arrays.fill(tiles, Color.white);
