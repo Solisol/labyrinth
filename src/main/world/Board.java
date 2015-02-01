@@ -90,7 +90,7 @@ public class Board extends JPanel implements PathFinderListener {
         fade++;
         this.repaint();
         try {
-            Thread.sleep(10);
+            Thread.sleep(5);
         } catch (InterruptedException ie) {
             //dooooo naaaathing
         }
@@ -102,6 +102,7 @@ public class Board extends JPanel implements PathFinderListener {
             tiles[node.getIndex()] = Color.blue;
         }
         this.repaint();
+        System.out.println(String.format("Number of steps are %s", fade));
     }
 
     public MazeCreator getMaze() {

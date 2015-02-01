@@ -44,7 +44,6 @@ public class DijkstrasPathFinder extends PathFinder {
             visited.add(last);
             raiseTakenNode(last.getIndex());
             if (last.getIndex() == goal) {
-                //TODO return path
                 raiseGoalFound(current.getNodes());
                 return;
             }

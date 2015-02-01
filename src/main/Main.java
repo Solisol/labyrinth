@@ -1,6 +1,6 @@
 package main;
 
-import main.pathfinders.AstarManhattanPathFinder;
+import main.pathfinders.DijkstrasPathFinder;
 import main.pathfinders.PathFinder;
 import main.world.Board;
 
@@ -20,8 +20,8 @@ public class Main {
         frame.setVisible(true);
 
 //        PathFinder pathFinder = new RandomPathFinder(board.getMaze());
-//        PathFinder pathFinder = new DijkstrasPathFinder(board.getMaze());
-        PathFinder pathFinder = new AstarManhattanPathFinder(board.getMaze());
+        PathFinder pathFinder = new DijkstrasPathFinder(board.getMaze());
+//        PathFinder pathFinder = new AstarManhattanPathFinder(board.getMaze());
 
         pathFinder.addListener(board);
         pathFinder.start();
