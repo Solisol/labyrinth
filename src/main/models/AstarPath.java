@@ -38,7 +38,7 @@ public class AstarPath extends Path {
         Vertex last = getNodes().getLast();
         int x = last.getIndex() % maze.getWidth();
         int y = last.getIndex() / maze.getWidth();
-        return Math.sqrt(Math.pow(goalX - x, 2) + Math.pow(goalY - y, 2));
+        return Math.abs(goalX - x) + Math.abs(goalY - y);
     }
 
     @Override

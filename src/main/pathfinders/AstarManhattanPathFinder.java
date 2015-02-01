@@ -13,11 +13,11 @@ import java.util.Set;
 /**
  *
  */
-public class AstarPathFinder extends PathFinder {
+public class AstarManhattanPathFinder extends PathFinder {
 
     private MazeCreator maze;
 
-    public AstarPathFinder(MazeCreator maze) {
+    public AstarManhattanPathFinder(MazeCreator maze) {
         this.maze = maze;
     }
 

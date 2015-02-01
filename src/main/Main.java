@@ -1,9 +1,7 @@
 package main;
 
-import main.pathfinders.AstarPathFinder;
-import main.pathfinders.DijkstrasPathFinder;
+import main.pathfinders.AstarManhattanPathFinder;
 import main.pathfinders.PathFinder;
-import main.pathfinders.RandomPathFinder;
 import main.world.Board;
 
 import javax.swing.*;
@@ -23,7 +21,7 @@ public class Main {
 
 //        PathFinder pathFinder = new RandomPathFinder(board.getMaze());
 //        PathFinder pathFinder = new DijkstrasPathFinder(board.getMaze());
-        PathFinder pathFinder = new AstarPathFinder(board.getMaze());
+        PathFinder pathFinder = new AstarManhattanPathFinder(board.getMaze());
 
         pathFinder.addListener(board);
         pathFinder.start();
