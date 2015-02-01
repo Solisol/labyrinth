@@ -90,7 +90,7 @@ public class Board extends JPanel implements PathFinderListener {
         fade++;
         this.repaint();
         try {
-            Thread.sleep(1000);
+            Thread.sleep(10);
         } catch (InterruptedException ie) {
             //dooooo naaaathing
         }
