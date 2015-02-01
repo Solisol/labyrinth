@@ -29,14 +29,22 @@ public class OpenMazeCreator extends MazeCreator {
             //pick random node that has neigbours
             Vertex randomNode = getRandomNode();
             ArrayList<Vertex> randomNodeOutNodes = randomNode.getOutNodes();
+            //Pick random neighbour of that random node
             Vertex randomNeighbour = randomNodeOutNodes.get(random.nextInt(randomNode.neighbourSize()));
+
             //update randomNode in paths with randomNeighbour as neighbour
             Vertex node = paths.getNodeInPosition(randomNode.getIndex());
-            node.addToNodes(paths.getNodeInPosition(randomNeighbour.getIndex()));
+            Vertex nodeNeighbour = paths.getNodeInPosition(randomNeighbour.getIndex());
+            node.addToNodes(nodeNeighbour);
             paths.updateNode(node);
-            //remove random neighbour from randomnode in floorsandwalls
+            nodeNeighbour.addToNodes(node);
+            paths.updateNode(nodeNeighbour);
+
+            //remove random neighbour from random node in floorsandwalls
             randomNode.removeFromNodes(randomNeighbour);
             floorAndWalls.updateNode(randomNode);
+            randomNeighbour.removeFromNodes(randomNode);
+            floorAndWalls.updateNode(randomNeighbour);
         }
     }
 

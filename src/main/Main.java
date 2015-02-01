@@ -1,6 +1,5 @@
 package main;
 
-import main.creator.RecursiveBacktrackerMazeCreator;
 import main.pathfinders.PathFinder;
 import main.pathfinders.RandomPathFinder;
 import main.world.Board;
