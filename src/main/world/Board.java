@@ -14,24 +14,24 @@ import java.util.List;
 
 public class Board extends JPanel implements PathFinderListener {
 
-    private final int width;
-    private final int height;
-    private final int length;
+    private int width;
+    private int height;
+    private int length;
+
     private MazeCreator maze;
+
     private Color[] tiles;
     private int fade;
 
-    public Board(int width, int height) {
-        this.width = width;
-        this.height = height;
-        length = width * height;
-//        maze = new RecursiveBacktrackerMazeCreator(width, height);
-        maze = new OpenMazeCreator(width, height);
-//        maze = new NoMazeCreator(width, height);
-        maze.generateMaze();
+    public Board(MazeCreator maze) {
+        setMaze(maze);
+    }
+
+    public void clearBoard() {
         tiles = new Color[length];
         Arrays.fill(tiles, Color.white);
         fade = 0;
+        repaint();
     }
 
     @Override
@@ -107,5 +107,17 @@ public class Board extends JPanel implements PathFinderListener {
 
     public MazeCreator getMaze() {
         return maze;
+    }
+
+    public void setMaze(MazeCreator maze) {
+        this.maze = maze;
+        this.width = maze.getWidth();
+        this.height = maze.getHeight();
+        length = width * height;
+        clearBoard();
+    }
+
+    public int getFade() {
+        return fade;
     }
 }

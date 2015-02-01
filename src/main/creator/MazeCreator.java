@@ -12,11 +12,8 @@ public abstract class MazeCreator {
 
     protected int length;
 
-    public int getWidth() {
-        return width;
-    }
-
     protected int width;
+
     protected int height;
 
     public Graph getPaths() {
@@ -89,5 +86,13 @@ public abstract class MazeCreator {
 
     public void setLength(int length) {
         this.length = length;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
     }
 }
