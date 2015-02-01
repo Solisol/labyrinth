@@ -1,5 +1,7 @@
 package main.pathfinders;
 
+import main.models.Vertex;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -31,9 +33,9 @@ public abstract class PathFinder {
         }
     }
 
-    protected void raiseGoalFound(int index) {
+    protected void raiseGoalFound(List<Vertex> path) {
         for (PathFinderListener listener : listenerList) {
-            listener.goalFound(index);
+            listener.goalFound(path);
         }
     }
 

@@ -9,8 +9,8 @@ import main.pathfinders.PathFinderListener;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.*;
+import java.util.List;
 
 public class Board extends JPanel implements PathFinderListener {
 
@@ -97,8 +97,10 @@ public class Board extends JPanel implements PathFinderListener {
     }
 
     @Override
-    public void goalFound(int index) {
-        tiles[index] = Color.blue;
+    public void goalFound(List<Vertex> path) {
+        for (Vertex node : path) {
+            tiles[node.getIndex()] = Color.blue;
+        }
         this.repaint();
     }
 

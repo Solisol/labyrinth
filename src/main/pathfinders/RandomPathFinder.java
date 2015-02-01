@@ -31,7 +31,7 @@ public class RandomPathFinder extends PathFinder {
             Vertex node = possibleNodes.remove(0);
             if (node.getIndex() == goal) {
                 System.out.println("IS GOAL");
-                raiseGoalFound(node.getIndex());
+//                raiseGoalFound(node.getIndex());
                 return;
             }
             if (!visited.contains(node)) {
