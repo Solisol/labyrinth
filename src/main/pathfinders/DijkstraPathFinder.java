@@ -12,11 +12,11 @@ import java.util.Set;
 /**
  *
  */
-public class DijkstrasPathFinder extends PathFinder {
+public class DijkstraPathFinder extends PathFinder {
 
     private MazeCreator maze;
 
-    public DijkstrasPathFinder(MazeCreator maze) {
+    public DijkstraPathFinder(MazeCreator maze) {
         this.maze = maze;
     }
 
