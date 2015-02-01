@@ -1,7 +1,48 @@
 package main.models;
 
+import main.creator.MazeCreator;
+
+import java.util.LinkedList;
+import java.util.List;
+
 /**
- * Created by sol on 2015-02-01.
+ *
  */
-public class AstarPath {
+public class AstarPath extends Path {
+
+    private int goalX;
+    private int goalY;
+    private MazeCreator maze;
+
+    public AstarPath(int goal, MazeCreator maze) {
+        super();
+        this.maze = maze;
+        this.goalX = goal % this.maze.getWidth();
+        this.goalY = goal / this.maze.getWidth();
+    }
+
+    public AstarPath(int goalX, int goalY, MazeCreator maze, LinkedList<Vertex> path) {
+        super(path);
+        this.maze = maze;
+        this.goalX = goalX;
+        this.goalY = goalY;
+    }
+
+    @Override
+    public double getLength() {
+        return getNodes().size() + getFlyDistanceToGoal();
+//        return getFlyDistanceToGoal();
+    }
+
+    private double getFlyDistanceToGoal() {
+        Vertex last = getNodes().getLast();
+        int x = last.getIndex() % maze.getWidth();
+        int y = last.getIndex() / maze.getWidth();
+        return Math.sqrt(Math.pow(goalX - x, 2) + Math.pow(goalY - y, 2));
+    }
+
+    @Override
+    public Path clone() {
+        return new AstarPath(goalX, goalY, maze, new LinkedList<Vertex>(getNodes()));
+    }
 }

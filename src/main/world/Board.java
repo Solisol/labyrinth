@@ -26,8 +26,8 @@ public class Board extends JPanel implements PathFinderListener {
         this.height = height;
         length = width * height;
 //        maze = new RecursiveBacktrackerMazeCreator(width, height);
-        maze = new OpenMazeCreator(width, height);
-//        maze = new NoMazeCreator(width, height);
+//        maze = new OpenMazeCreator(width, height);
+        maze = new NoMazeCreator(width, height);
         maze.generateMaze();
         tiles = new Color[length];
         Arrays.fill(tiles, Color.white);

@@ -11,6 +11,11 @@ public abstract class MazeCreator {
     protected Graph paths;
 
     protected int length;
+
+    public int getWidth() {
+        return width;
+    }
+
     protected int width;
     protected int height;
 

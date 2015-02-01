@@ -24,9 +24,13 @@ public class Path implements Comparable<Path>{
         this.nodes = nodes;
     }
 
+    public double getLength() {
+        return nodes.size();
+    }
+
     @Override
     public int compareTo(Path path) {
-        return nodes.size() - path.nodes.size();
+        return (int)Math.signum(getLength() - path.getLength());
     }
 
     public Path clone() {
