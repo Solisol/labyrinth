@@ -31,5 +31,11 @@ public abstract class PathFinder {
         }
     }
 
+    protected void raiseGoalFound(int index) {
+        for (PathFinderListener listener : listenerList) {
+            listener.goalFound(index);
+        }
+    }
+
     public abstract void start();
 }

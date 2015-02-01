@@ -6,4 +6,6 @@ public interface PathFinderListener {
 
     void takenNode(int index);
 
+    void goalFound(int index);
+
 }

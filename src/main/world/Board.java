@@ -90,10 +90,16 @@ public class Board extends JPanel implements PathFinderListener {
         fade++;
         this.repaint();
         try {
-            Thread.sleep(5);
+            Thread.sleep(1000);
         } catch (InterruptedException ie) {
             //dooooo naaaathing
         }
+    }
+
+    @Override
+    public void goalFound(int index) {
+        tiles[index] = Color.blue;
+        this.repaint();
     }
 
     public MazeCreator getMaze() {
