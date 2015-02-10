@@ -1,5 +1,6 @@
 package main.pathfinders;
 
+import main.creator.MazeCreator;
 import main.models.Vertex;
 
 import java.util.LinkedList;
@@ -8,6 +9,8 @@ import java.util.List;
 public abstract class PathFinder {
 
     private List<PathFinderListener> listenerList;
+
+    protected MazeCreator maze;
 
     public PathFinder() {
         listenerList = new LinkedList<PathFinderListener>();
@@ -37,6 +40,10 @@ public abstract class PathFinder {
         for (PathFinderListener listener : listenerList) {
             listener.goalFound(path);
         }
+    }
+
+    public void setMaze(MazeCreator maze) {
+        this.maze = maze;
     }
 
     public abstract void start();

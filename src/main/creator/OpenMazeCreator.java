@@ -23,7 +23,7 @@ public class OpenMazeCreator extends MazeCreator {
         core.generateMaze();
         this.paths = core.getPaths();
         this.floorAndWalls = Graph.getOpposite(paths, width, height);
-        int counter = (int) (length * 0.1d);
+        int counter = (int) (length * 0.2d);
         while (counter > 0 && floorAndWalls.size() > 0) {
             counter--;
             //pick random node that has neigbours

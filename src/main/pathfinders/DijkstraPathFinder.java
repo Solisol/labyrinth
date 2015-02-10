@@ -14,8 +14,6 @@ import java.util.Set;
  */
 public class DijkstraPathFinder extends PathFinder {
 
-    private MazeCreator maze;
-
     public DijkstraPathFinder(MazeCreator maze) {
         this.maze = maze;
     }

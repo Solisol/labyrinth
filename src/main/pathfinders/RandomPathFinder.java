@@ -8,8 +8,6 @@ import java.util.*;
 
 public class RandomPathFinder extends PathFinder {
 
-    private MazeCreator maze;
-
     public RandomPathFinder(MazeCreator maze) {
         this.maze = maze;
     }

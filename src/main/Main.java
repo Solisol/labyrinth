@@ -25,11 +25,10 @@ public class Main {
         JFrame frame = new JFrame();
         frame.setLayout(new GridLayout(1,1));
 
-        int width = 100;
-        int height = 100;
+        final int width = 50;
+        final int height = 50;
 
         maze = new NoMazeCreator(width, height);
-//        maze = new OpenMazeCreator(width, height);
         maze.generateMaze();
         pathFinder = new RandomPathFinder(maze);
 
@@ -37,7 +36,7 @@ public class Main {
         pathFinder.addListener(board);
 
         //Optionspanel that holds all options
-        JPanel optionsPanel = new JPanel(new GridLayout(3, 1));
+        JPanel optionsPanel = new JPanel(new GridLayout(4, 1));
 
         //Panel for the different algorithms
         JPanel algorithmsPanel = new JPanel(new GridLayout(3, 1));
@@ -75,6 +74,49 @@ public class Main {
         algorithmsPanel.add(dijkstraButton);
         algorithmsPanel.add(astarButton);
 
+        //Panel for different mazes
+        JPanel mazePanel = new JPanel(new GridLayout(3, 1));
+        final ButtonGroup mazeGroup = new ButtonGroup();
+
+        JRadioButton noMazeButton = new JRadioButton("Empty grid", true);
+        noMazeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                maze = new NoMazeCreator(width, height);
+                maze.generateMaze();
+                pathFinder.setMaze(maze);
+                board.setMaze(maze);
+            }
+        });
+        JRadioButton openMazeButton = new JRadioButton("Open maze", false);
+        openMazeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                maze = new OpenMazeCreator(width, height);
+                maze.generateMaze();
+                pathFinder.setMaze(maze);
+                board.setMaze(maze);
+            }
+        });
+        JRadioButton mazeButton = new JRadioButton("Maze", false);
+        mazeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                maze = new RecursiveBacktrackerMazeCreator(width, height);
+                maze.generateMaze();
+                pathFinder.setMaze(maze);
+                board.setMaze(maze);
+            }
+        });
+
+        mazeGroup.add(noMazeButton);
+        mazeGroup.add(openMazeButton);
+        mazeGroup.add(mazeButton);
+
+        mazePanel.add(noMazeButton);
+        mazePanel.add(openMazeButton);
+        mazePanel.add(mazeButton);
+
         //Buttons to start algorithm on current maze and to generate new maze
         JPanel buttonsPanel = new JPanel(new GridLayout(1, 2));
 
@@ -108,12 +150,13 @@ public class Main {
 
         //Add to options panel
         optionsPanel.add(algorithmsPanel);
+        optionsPanel.add(mazePanel);
         optionsPanel.add(buttonsPanel);
         optionsPanel.add(numberOfSteps);
 
         JSplitPane splitter = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, board, optionsPanel);
         frame.add(splitter);
-        frame.setSize(801, 801);
+        frame.setSize(1201, 801);
         frame.setTitle("Hello frameu laburinthu");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);

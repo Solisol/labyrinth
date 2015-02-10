@@ -15,8 +15,6 @@ import java.util.Set;
  */
 public class AstarManhattanPathFinder extends PathFinder {
 
-    private MazeCreator maze;
-
     public AstarManhattanPathFinder(MazeCreator maze) {
         this.maze = maze;
     }
