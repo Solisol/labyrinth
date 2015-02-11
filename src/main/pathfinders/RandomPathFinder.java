@@ -2,6 +2,7 @@ package main.pathfinders;
 
 import main.creator.MazeCreator;
 import main.models.Graph;
+import main.models.Path;
 import main.models.Vertex;
 
 import java.util.*;
@@ -15,34 +16,39 @@ public class RandomPathFinder extends PathFinder {
     @Override
     public void start() {
         Graph paths = maze.getPaths();
-        int goal = maze.getLength() - 1;
-        int start = 0;
 
-        List<Vertex> possibleNodes = new ArrayList<Vertex>();
+        Random random = new Random();
+
         Set<Vertex> visited = new HashSet<Vertex>();
 
-        possibleNodes.add(paths.getNodeInPosition(start));
-        raiseNodeGetsPickeable(start);
+        ArrayList<Path> availablePaths = new ArrayList<Path>();
 
-        while (!possibleNodes.isEmpty()) {
-            Collections.shuffle(possibleNodes);
-            Vertex node = possibleNodes.remove(0);
-            if (node.getIndex() == goal) {
-                System.out.println("IS GOAL");
-//                raiseGoalFound(node.getIndex());
+        int start = 0;
+        int goal = maze.getLength() - 1;
+        Vertex node = paths.getNodeInPosition(start);
+        Path path = new Path();
+        path.add(node);
+        availablePaths.add(path);
+
+        while (!availablePaths.isEmpty()) {
+            Path current = availablePaths.get(random.nextInt(availablePaths.size()));
+            Vertex last = current.getNodes().getLast();
+            if (visited.contains(last)) {
+                continue;
+            }
+            visited.add(last);
+            raiseTakenNode(last.getIndex());
+            if (last.getIndex() == goal) {
+                raiseGoalFound(current.getNodes());
                 return;
             }
-            if (!visited.contains(node)) {
-                raiseTakenNode(node.getIndex());
-                visited.add(node);
-                for (Vertex child : node.getOutNodes()) {
-                    if (!visited.contains(child) && !possibleNodes.contains(child)) {
-                        raiseNodeGetsPickeable(child.getIndex());
-                        possibleNodes.add(paths.getNodeInPosition(child.getIndex()));
-                    }
+            for (Vertex neighbour : last.getOutNodes()) {
+                if (!visited.contains(neighbour)) {
+                    Path additional = current.clone();
+                    additional.add(paths.getNodeInPosition(neighbour.getIndex()));
+                    availablePaths.add(additional);
+                    raiseNodeGetsPickeable(neighbour.getIndex());
                 }
-            } else {
-                System.out.println("Already been at");
             }
         }
 
