@@ -1,16 +1,5 @@
-Small project to visualize path finding algorithms using a maze
+A project to visualize path finding algorithms solving different kinds of mazes.
 
-Example of generated maze:
-<code>
- _ _ _ _ _ _ _ _ _ _<br />
-|_ _ _ _ _ _ _ _  | |<br />
-|  _|  _    |   | | |<br />
-|  _ _ _| | |_| |_  |<br />
-| | |  _ _|_   _ _| |<br />
-|_  |_ _ _  |_|  _ _|<br />
-|  _|_ _  | |  _|_  |<br />
-| |   |  _| | |   | |<br />
-|_ _| |   | | | | | |<br />
-|  _ _|_| | |_ _|_  |<br />
-|_ _ _ _ _|_ _ _ _ _|<br />
-</code>
+The project is written in Java.
+
+The project has been developed in cooperation with [Unarmed](https://github.com/unarmed "Unarmed GitHub").
